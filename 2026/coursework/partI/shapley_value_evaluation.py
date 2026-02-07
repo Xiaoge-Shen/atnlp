@@ -80,7 +80,8 @@ def compute_marginal_contributions(steps, v_S):
         for i in steps:
             idx_i = pi.index(i)
             #############################################################################################
-            ###Question 6: INSERT CODE HERE: Retrieve S_i, S_i_union_i, S_i_sorted, S_i_union_i_sorted###
+            ###Question 6: INSERT CODE HERE: Retrieve S_i, S_i_union_i, S_i_sorted, included_S_i_sorted,
+            ### included_S_i_union_i_sorted
             #############################################################################################
             raise NotImplementedError("Implement the retrieval of S_i, S_i_union_i, and their sorted tuples.")
             v_S_i = v_S.get(included_S_i_sorted, np.nan)
