@@ -15,7 +15,7 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 raise NotImplementedError("Create a .env file with the api keys with the input OPENAI_API_KEY= before executing the code")
 client = openai.OpenAI()
 
-def predict_gpt(openai, messages):
+def predict_gpt(openai_m, messages):
     ######################################
     ###Question 2: INSERT THE CODE HERE###
     ######################################
@@ -25,7 +25,7 @@ def predict_gpt(openai, messages):
     based on a conversation history. 
 
     Args:
-        openai: The OpenAI client object used to make API calls.
+        openai_m: The OpenAI client object used to make API calls.
         messages: A list of dictionaries representing the conversation history, 
                   where each dictionary has a "role" (e.g., "system", "user", or "assistant") 
                   and "content" (the message text).
