@@ -24,7 +24,9 @@ def get_included_steps(row, steps):
     ##############################################################################
     ###Question 4: INSERT CODE HERE: Get included steps as a tuple for each row.###
     ##############################################################################
-    raise NotImplementedError("Get included steps as a tuple for each row.")   
+    for step in steps:
+        if int(row[f"step{step}_present"]) == 1:
+            included_steps.append(step)
     return tuple(sorted(included_steps))
 
 def generate_all_subsets(steps):
@@ -55,7 +57,13 @@ def compute_v_S(df, all_subsets_included):
     ##################################################################################
     ###Question 5: INSERT CODE HERE: Compute v(S) for all subsets of included steps.###
     ##################################################################################
-    raise NotImplementedError("Implement the code to compute v(S) for all subsets of included steps.")    
+    v_S = {}
+
+    # v(S) is defined as the fraction of questions answered correctly when using only steps in S,
+    # i.e., the mean of is_correct for each subset S.
+    grouped = df.groupby("present_steps")["is_correct"].mean()
+    for subset in all_subsets_included:
+        v_S[subset] = float(grouped.get(subset, np.nan))
     return v_S
 
 def compute_marginal_contributions(steps, v_S):
@@ -83,7 +91,11 @@ def compute_marginal_contributions(steps, v_S):
             ###Question 6: INSERT CODE HERE: Retrieve S_i, S_i_union_i, S_i_sorted, included_S_i_sorted,
             ### included_S_i_union_i_sorted
             #############################################################################################
-            raise NotImplementedError("Implement the retrieval of S_i, S_i_union_i, and their sorted tuples.")
+            included_S_i = tuple(pi[:idx_i])
+            included_S_i_union_i = tuple(pi[: idx_i + 1])
+
+            included_S_i_sorted = tuple(sorted(included_S_i))
+            included_S_i_union_i_sorted = tuple(sorted(included_S_i_union_i))
             v_S_i = v_S.get(included_S_i_sorted, np.nan)
             v_S_i_union_i = v_S.get(included_S_i_union_i_sorted, np.nan)
             if np.isnan(v_S_i) or np.isnan(v_S_i_union_i):
@@ -93,7 +105,7 @@ def compute_marginal_contributions(steps, v_S):
                 ###############################################################################
                 ###Question 6.1: INSERT CODE HERE: Compute the marginal contribution of step i###
                 ###############################################################################
-                raise NotImplementedError("Implement the computation of the marginal contribution of step i.")
+                Delta_sum[i] += v_S_i_union_i - v_S_i
         if valid_permutation:
             valid_permutations_count += 1
     return Delta_sum, valid_permutations_count
@@ -113,7 +125,7 @@ def compute_shapley_values(Delta_sum, valid_permutations_count, steps):
     ##############################################################
     ###Question 7: INSERT CODE HERE: Compute the Shapley values###
     ##############################################################
-    raise NotImplementedError("INSERT CODE HERE: Compute the Shapley values")
+    shapley_values = {i: (Delta_sum[i] / valid_permutations_count) for i in steps}
     return shapley_values
 
 def main():
@@ -130,8 +142,14 @@ def main():
     #############################################################
     # Question 7.3: INSERT CODE HERE: Compute the Shapley values#
     #############################################################
-    raise NotImplementedError("Implement the code to generate all possible subsets for the included steps.")
-    raise NotImplementedError("Implement the code to compute v(S).")
-    raise NotImplementedError("Implement the code to compute the Shapley values.")
+    all_subsets_included = generate_all_subsets(steps)
+    v_S = compute_v_S(df, all_subsets_included)
+
+    Delta_sum, valid_permutations_count = compute_marginal_contributions(steps, v_S)
+    shapley_values = compute_shapley_values(Delta_sum, valid_permutations_count, steps)
+
+    print("Shapley Values:")
+    for step in steps:
+        print(f"Step {step}: {shapley_values[step]}")
 if __name__ == "__main__":
     main()

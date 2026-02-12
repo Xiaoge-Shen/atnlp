@@ -8,7 +8,6 @@ from datasets import load_from_disk
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import time
-from peft import PeftModel
 import random
 import numpy as np
 
@@ -55,6 +54,8 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     if args.adapter_path:
+        from peft import PeftModel
+
         with open(log_file_path, 'w') as f:
             f.write(f"Evaluating the SFTed model {args.model_signature} with LORA from: {args.output_path}.\n")
         base_id = args.model_signature
