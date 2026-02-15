@@ -11,4 +11,4 @@ Short history:
 Update 7/2/2026: The file partI/shapley_value_evaluation.py was changed with two additional comments (no actual change in comments); The file partI/utils.py was changed (openai as argument to a function changed to openai_m, for clarity/clean code)
 		 As a result, coursework-all.zip was updated as well
 
-Update 9/2/2026: Changed requirements.txt for partII, due to an update of the transformers package in Google colab.
+Update 9/2/2026: Changes requirements.txt in partII/, as the default transformers package vesion on Google colab has changed, and was no longer compatible with the peft package. The correct transformers package is now enforced in requirements.txt.
