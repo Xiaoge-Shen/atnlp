@@ -12,3 +12,5 @@ Update 7/2/2026: The file partI/shapley_value_evaluation.py was changed with two
 		 As a result, coursework-all.zip was updated as well
 
 Update 9/2/2026: Changes requirements.txt in partII/, as the default transformers package vesion on Google colab has changed, and was no longer compatible with the peft package. The correct transformers package is now enforced in requirements.txt.
+
+Update 15/2/2026: Minor change into one of the commands provided in partII (running main.py). Last backslash was removed, as unnecessary.
