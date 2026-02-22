@@ -99,7 +99,7 @@ def main():
         tokenizer = AutoTokenizer.from_pretrained(base_id)
         base_model = AutoModelForCausalLM.from_pretrained(
             base_id,
-            torch_dtype=torch.bfloat16,
+            torch_dtype=torch.float16,
             device_map="auto",
             attn_implementation="sdpa"
         )
