@@ -1,0 +1,47 @@
+{
+  "os":  "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python":  "CPython 3.12.12",
+  "startedAt":  "2026-03-01T20:49:14.525809Z",
+  "args":  [
+    "--model_signature",
+    "Qwen/Qwen2.5-0.5B-Instruct",
+    "--output_path",
+    "./checkpoints/Qwen/Qwen2.5-0.5B-Instruct-sft",
+    "--wandb_token",
+    "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"
+  ],
+  "program":  "/home/zhangxiao/atnlp/2026/coursework/partII/finetuning/main.py",
+  "codePath":  "2026/coursework/partII/finetuning/main.py",
+  "codePathLocal":  "finetuning/main.py",
+  "git":  {
+    "remote":  "https://github.com/Xiaoge-Shen/atnlp.git",
+    "commit":  "acd8f51e9e140c8110003270010565f868a29d68"
+  },
+  "email":  "1450478043@qq.com",
+  "root":  "/home/zhangxiao/atnlp/2026/coursework/partII",
+  "host":  "Macbook16Pro",
+  "executable":  "/home/zhangxiao/miniconda3/envs/atnlp/bin/python",
+  "cpu_count":  24,
+  "cpu_count_logical":  24,
+  "gpu":  "NVIDIA GeForce RTX 5090 Laptop GPU",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "1081101176832",
+      "used":  "129247940608"
+    }
+  },
+  "memory":  {
+    "total":  "33344872448"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA GeForce RTX 5090 Laptop GPU",
+      "memoryTotal":  "25651314688",
+      "architecture":  "Blackwell",
+      "uuid":  "GPU-d5a7fb2c-3710-0bfa-876b-fd2eab3074d7"
+    }
+  ],
+  "cudaVersion":  "13.1",
+  "writerId":  "ycm9f9nft8lhdfurjs1chq8v6g8l1ksh"
+}
