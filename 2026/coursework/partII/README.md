@@ -105,7 +105,7 @@ Examples of commands for running scripts in Colab's notebook.
 ! python finetuning/main.py \
     --model_signature $MODEL_SIGNATURE \
     --output_path ./checkpoints/$MODEL_SIGNATURE-sft \
-    --wandb_token <YOUR_WANDB_API_KEY> \
+    --wandb_token <YOUR_WANDB_API_KEY>
 ```
 
 ### 3. GRPO
