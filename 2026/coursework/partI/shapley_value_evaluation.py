@@ -25,9 +25,12 @@ def get_included_steps(row, steps):
     ###Question 4: INSERT CODE HERE: Get included steps as a tuple for each row.###
     ##############################################################################
     for step in steps:
-        if int(row[f"step{step}_present"]) == 1:
+        column_name = "step" + str(step) + "_present"
+        if int(row[column_name]) == 1:
             included_steps.append(step)
-    return tuple(sorted(included_steps))
+
+    included_steps = tuple(sorted(included_steps))
+    return included_steps
 
 def generate_all_subsets(steps):
     """
@@ -61,9 +64,16 @@ def compute_v_S(df, all_subsets_included):
 
     # v(S) is defined as the fraction of questions answered correctly when using only steps in S,
     # i.e., the mean of is_correct for each subset S.
-    grouped = df.groupby("present_steps")["is_correct"].mean()
-    for subset in all_subsets_included:
-        v_S[subset] = float(grouped.get(subset, np.nan))
+
+    # group by subset of steps and compute mean accuracy
+    grouped_results = df.groupby("present_steps")["is_correct"].mean()
+
+    for subset in all_subsets_included:        
+        if subset in grouped_results:
+            v_S[subset] = float(grouped_results[subset])
+        else:
+            v_S[subset] = np.nan
+
     return v_S
 
 def compute_marginal_contributions(steps, v_S):
