@@ -1,0 +1,6 @@
+Start evaluating the comat-sft experiment.
+Args: Namespace(model_signature='Qwen/Qwen2.5-0.5B-Instruct', sft_adapter_path='./checkpoints/Qwen/Qwen2.5-0.5B-Instruct-comat-sft', grpo_adapter_path=None, output_path='./outputs/comat-sft')
+Overall Accuracy (including invalid): 28.00%
+Valid Accuracy (excluding invalid): 28.00%
+Invalid Rate: 0.00%
+Evaluation Duration: 528.88 seconds

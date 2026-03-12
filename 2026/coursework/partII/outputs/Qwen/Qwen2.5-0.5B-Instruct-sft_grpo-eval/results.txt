@@ -1,0 +1,5 @@
+Evaluating model Qwen/Qwen2.5-0.5B-Instruct with SFT from ./checkpoints/Qwen/Qwen2.5-0.5B-Instruct-sft and GRPO from ./checkpoints/Qwen/Qwen2.5-0.5B-Instruct-sft_grpo_q5.
+Overall Accuracy (including invalid): 31.00%
+Valid Accuracy (excluding invalid): 31.00%
+Invalid Rate: 0.00%
+Evaluation Duration: 199.38 seconds
